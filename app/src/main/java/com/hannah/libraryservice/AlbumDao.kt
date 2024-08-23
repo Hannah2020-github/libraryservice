@@ -1,0 +1,17 @@
+package com.hannah.libraryservice
+
+import androidx.room.Dao
+import androidx.room.Insert
+import androidx.room.Query
+
+@Dao
+interface AlbumDao{
+    @Insert
+    fun insertOne(album: Album)
+
+    @Query("SELECT * FROM Album")
+    fun getAllAlbums(): List<Album>
+
+    @Query("SELECT * FROM Album " + "JOIN Artist ON Album.artlistId = Artist.id WHERE artlistId = :aristId")
+    fun findAlbumJoinArtist(aristId: String): List<Album>
+}
