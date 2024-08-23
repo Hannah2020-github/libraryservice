@@ -13,5 +13,5 @@ import androidx.room.ForeignKey
 data class Album(
     @PrimaryKey val albumId: String,
     val albumName: String,
-    val artlistId: String // foreign key
+    val artistId: String // foreign key
 )
