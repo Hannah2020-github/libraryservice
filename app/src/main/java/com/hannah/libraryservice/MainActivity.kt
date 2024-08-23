@@ -20,7 +20,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.main_activity)
 
-        val appDatabase = Room.databaseBuilder(this, AppDatabase::class.java, "database.db").build()
+        val appDatabase = AppDatabase.buildDatabase(this)
         val artistDao = appDatabase.getArtistDao()
         val albumDao = appDatabase.getAlbumDao()
 
