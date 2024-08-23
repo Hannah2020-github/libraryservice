@@ -2,10 +2,16 @@ package com.hannah.libraryservice
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import androidx.room.ForeignKey
+@Entity(foreignKeys = [ForeignKey(
+    entity = Artist::class,
+    parentColumns = arrayOf("id"),
+    childColumns = arrayOf("artistId"),
+    onDelete = ForeignKey.CASCADE
+    )])
 
-@Entity
 data class Album(
     @PrimaryKey val albumId: String,
     val albumName: String,
-    val artlistId: String
+    val artlistId: String // foreign key
 )
