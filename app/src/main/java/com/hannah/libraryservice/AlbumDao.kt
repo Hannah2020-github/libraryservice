@@ -13,5 +13,5 @@ interface AlbumDao{
     fun getAllAlbums(): List<Album>
 
     @Query("SELECT * FROM Album JOIN Artist ON Album.artistId = Artist.id WHERE artistId = :aristId")
-    fun findAlbumJoinArtist(aristId: String): List<Album>
+    fun findAlbumJoinArtist(aristId: String): List<Compound>
 }

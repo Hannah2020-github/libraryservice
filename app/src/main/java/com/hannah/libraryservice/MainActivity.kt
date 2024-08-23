@@ -25,18 +25,19 @@ class MainActivity : ComponentActivity() {
         val albumDao = appDatabase.getAlbumDao()
 
         Thread {
-            val artist1 = Artist("1", "Willson", 29)
-            val artist2 = Artist("2", "Grace", 30)
-            val artist3 = Artist("3", "Mike", 31)
-            val artist4 = Artist("4", "Spencer", 32)
-            val artist5 = Artist("5", "Esther", 33)
-            val artist6 = Artist("6", "Naloe", 34)
+//            val album1 = Album("1", "mary", "2")
+//            val album2 = Album("2", "apple", "2")
+//            val album3 = Album("3", "candy", "3")
 
-            artistDao.inserOne(artist1)
-            artistDao.inserTwo(artist2, artist3)
-            artistDao.insertManyArtist(artist4, artist5, artist6)
+//            albumDao.insertOne(album1)
+//            albumDao.insertOne(album2)
+//            albumDao.insertOne(album3)
 
-            Log.d("AAA", "${artistDao.getAllArtists()}")
+            for (compound in albumDao.findAlbumJoinArtist("2")){
+                Log.d("AAA", "${compound.album.albumName} is made by ${compound.artist.age} ages old, artist named ${compound.artist.name}")
+            }
+
+//            Log.d("AAA", "${albumDao.findAlbumJoinArtist("2")}")
 
         }.start()
 
