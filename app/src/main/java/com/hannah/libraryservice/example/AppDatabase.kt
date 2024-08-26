@@ -1,4 +1,4 @@
-package com.hannah.libraryservice
+package com.hannah.libraryservice.example
 
 import android.content.Context
 import androidx.room.Database

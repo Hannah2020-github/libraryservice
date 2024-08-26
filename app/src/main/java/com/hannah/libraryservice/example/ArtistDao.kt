@@ -1,4 +1,4 @@
-package com.hannah.libraryservice
+package com.hannah.libraryservice.example
 
 import androidx.room.Dao
 import androidx.room.Delete
