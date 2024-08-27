@@ -2,11 +2,53 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:padding="20dp">
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/main_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Hello~~~" />
+        android:layout_marginTop="20dp"
+        android:textSize="36sp"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:text="Library Service System" />
+
+    <Button
+        android:id="@+id/register_book_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:textSize="20sp"
+        android:layout_gravity="center"
+        android:backgroundTint="@color/btn1"
+        android:text="Register New Book" />
+    <Button
+        android:id="@+id/register_user_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:layout_gravity="center"
+        android:layout_margin="10dp"
+        android:backgroundTint="@color/btn2"
+        android:text="Register New User" />
+    <Button
+        android:id="@+id/borrow_return_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:layout_gravity="center"
+        android:layout_margin="10dp"
+        android:backgroundTint="@color/btn3"
+        android:text="Borrow / Return Book" />
+    <Button
+        android:id="@+id/data_query_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:layout_gravity="center"
+        android:layout_margin="10dp"
+        android:backgroundTint="@color/btn4"
+        android:text="User / Book Data Query" />
 </LinearLayout>

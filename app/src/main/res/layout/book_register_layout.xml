@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:padding="20dp"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:textAlignment="center"
+        android:textColor="@color/btn1"
+        android:textSize="40sp"
+        android:text="New Book Register" />
+
+    <EditText
+        android:id="@+id/bookName_for_register"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:textSize="30sp"
+        android:ems="10"
+        android:inputType="text"
+        android:hint="Book Name" />
+
+    <EditText
+        android:id="@+id/bookISBN_for_register"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:textSize="30sp"
+        android:ems="10"
+        android:inputType="text"
+        android:hint="ISBN" />
+
+    <Button
+        android:id="@+id/book_register_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="30dp"
+        android:textColor="@color/white"
+        android:textSize="30sp"
+        android:text="SUBMIT"
+        android:backgroundTint="@color/btn1"/>
+
+    <TextView
+        android:id="@+id/book_register_result"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:layout_marginTop="20dp"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:text="sult"/>
+</LinearLayout>
