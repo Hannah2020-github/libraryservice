@@ -23,6 +23,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".activities.BookRegisterActivity" android:exported="false" />
+        <activity android:name=".activities.BorrowReturnActivity" android:exported="false" />
+        <activity android:name=".activities.DataQueryActivity" android:exported="false" />
+        <activity android:name=".activities.UserRegisterActivity" android:exported="false" />
     </application>
 
 </manifest>
