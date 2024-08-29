@@ -102,7 +102,7 @@ class UserRegisterActivity : AppCompatActivity() {
             singleThreadExecutor.execute {
                 try {
                     val userNameEntry = userName.text.toString()
-                    val userIdEntry = userID.text.toString()
+                    val userIdEntry = userID.text.toString().uppercase()
                     val db = AppDatabase.buildDatabase(this)
                     db.getUserDao().insertOneNewUser(User(userIdEntry, userNameEntry, null, null, null, null))
                     runOnUiThread {
