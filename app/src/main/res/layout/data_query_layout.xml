@@ -1,65 +1,65 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="20dp">
 
-    <LinearLayout
+    <TextView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:padding="20dp">
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Data Query"
+        android:textAlignment="center"
+        android:textColor="@color/btn4"
+        android:textSize="40sp" />
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:text="Data Query"
-            android:textAlignment="center"
-            android:textColor="@color/btn4"
-            android:textSize="40sp" />
+    <EditText
+        android:id="@+id/dataId_for_query"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:ems="10"
+        android:hint="Data ID"
+        android:inputType="text"
+        android:textSize="30sp" />
 
-        <EditText
-            android:id="@+id/dataId_for_query"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:ems="10"
-            android:hint="Data ID"
-            android:inputType="text"
-            android:textSize="30sp" />
+    <Button
+        android:id="@+id/search_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        android:backgroundTint="@color/btn4"
+        android:text="SEARCH"
+        android:textColor="@color/white"
+        android:textSize="30sp" />
 
-        <Button
-            android:id="@+id/search_btn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="10dp"
-            android:backgroundTint="@color/btn4"
-            android:text="SEARCH"
-            android:textColor="@color/white"
-            android:textSize="30sp" />
+    <Button
+        android:id="@+id/find_all_user_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        android:backgroundTint="@color/btn2"
+        android:text="FIND ALL USERS"
+        android:textColor="@color/white"
+        android:textSize="30sp" />
 
-        <Button
-            android:id="@+id/find_all_user_btn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="10dp"
-            android:backgroundTint="@color/btn2"
-            android:text="FIND ALL USERS"
-            android:textColor="@color/white"
-            android:textSize="30sp" />
+    <Button
+        android:id="@+id/find_all_book_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        android:backgroundTint="@color/btn1"
+        android:text="FIND ALL BOOKS"
+        android:textColor="@color/white"
+        android:textSize="30sp" />
 
-        <Button
-            android:id="@+id/find_all_book_btn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="10dp"
-            android:backgroundTint="@color/btn1"
-            android:text="FIND ALL BOOKS"
-            android:textColor="@color/white"
-            android:textSize="30sp" />
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
         <TextView
             android:id="@+id/data_query_result"
@@ -70,6 +70,6 @@
             android:textAlignment="center"
             android:textColor="@color/black"
             android:textSize="20sp" />
-    </LinearLayout>
+    </ScrollView>
+</LinearLayout>
 
-</ScrollView>
