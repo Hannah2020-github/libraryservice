@@ -67,6 +67,9 @@ class IdUtil {
         }
 
         fun idValidationCheck(id: String): Boolean {
+            if (!id[0].isLetter()) {
+                return false
+            }
             // 首字為大寫英文字母
             val id = id.uppercase()
             val weight = arrayOf(1, 9, 8, 7, 6, 5, 4, 3, 2, 1, 1)

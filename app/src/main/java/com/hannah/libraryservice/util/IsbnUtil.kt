@@ -11,7 +11,7 @@ class IsbnUtil {
             if (bookISBN == "") {
                 val ab = AlertDialog.Builder(context)
                 ab.setTitle("ISBN Error")
-                ab.setMessage("The book ISBN is not valid.")
+                ab.setMessage("The book ISBN cannot be empty.")
                 ab.setCancelable(false)
                 ab.setPositiveButton("Okey") {dialog, _ -> dialog.dismiss()}
                 ab.create().show()
