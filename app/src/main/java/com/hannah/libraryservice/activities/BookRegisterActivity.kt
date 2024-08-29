@@ -18,7 +18,7 @@ class BookRegisterActivity : AppCompatActivity() {
     private lateinit var bookISBN: EditText
     private lateinit var bookRegisterBtn: Button
     private lateinit var bookRegisterResult: TextView
-    private val sigleThreadException =  Executors.newSingleThreadExecutor()
+    private val sigleThreadExecutor =  Executors.newSingleThreadExecutor()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -71,7 +71,7 @@ class BookRegisterActivity : AppCompatActivity() {
                 return@setOnClickListener
             }
             // 以上條件滿足，則儲存 book 資料
-            sigleThreadException.execute {
+            sigleThreadExecutor.execute {
                 try {
                     val bookTitle = bookName.text.toString()
                     val bookISBNEntry = bookISBN.text.toString()
