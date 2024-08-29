@@ -31,6 +31,39 @@ class DataQueryActivity : AppCompatActivity() {
         AllBooksBtn = findViewById(R.id.find_all_book_btn)
         result = findViewById(R.id.data_query_result)
 
+        AllUsersBtn.setOnClickListener {
+            singleThreadExecutor.execute {
+                val db = AppDatabase.buildDatabase(this)
+                val userDao = db.getUserDao()
+                val bookDao = db.getBookDao()
+                var resultText = ""
+
+                for (user in userDao.getAllUsers()) {
+                    resultText += "User Name is ${user.fullName}\n"
+                    resultText += "User ID is ${user.id}\n"
+                    resultText += "Book is now borrow: \n"
+                    var isBorrowingBooks = false
+                    val bookBorrowing = arrayOf(user.Borrowing1, user.Borrowing2, user.Borrowing3, user.Borrowing4)
+                    for (i in bookBorrowing.indices) {
+                        if (bookBorrowing[i] != null) {
+                            isBorrowingBooks = true
+                            val bookFound = bookDao.getBookByISBN(bookBorrowing[i]!!)
+                            resultText += "${bookFound.isbn} ${bookFound.bookName}\n"
+
+                        }
+                    }
+                    if (!isBorrowingBooks) {
+                        resultText += "none\n"
+                    }
+
+                    resultText += "============\n"
+                }
+                runOnUiThread {
+                    result.text = resultText
+                }
+            }
+        }
+
         AllBooksBtn.setOnClickListener {
             singleThreadExecutor.execute {
                 val db = AppDatabase.buildDatabase(this)
@@ -47,7 +80,7 @@ class DataQueryActivity : AppCompatActivity() {
                     result.text = resultText
                 }
             }
-            
+
         }
 
 
