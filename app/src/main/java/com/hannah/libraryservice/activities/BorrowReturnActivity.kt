@@ -36,6 +36,7 @@ class BorrowReturnActivity : AppCompatActivity() {
         returnBtn = findViewById(R.id.return_btn)
         result = findViewById(R.id.borrow_return_result)
 
+        // 借書
         borrowBtn.setOnClickListener {
             val bookIsbn = bookISBN.text.toString()
             val userId = userID.text.toString()
@@ -46,7 +47,7 @@ class BorrowReturnActivity : AppCompatActivity() {
             if (!checkUserId(userId, this)) {
                 return@setOnClickListener
             }
-            // 借書
+
             singleThreadExecutor.execute {
                 try {
                     val db = AppDatabase.buildDatabase(this)
@@ -139,16 +140,111 @@ class BorrowReturnActivity : AppCompatActivity() {
                 }catch (e: Exception) {
                     result.text = e.message
                     e.printStackTrace()
-                    Log.d("AAA", "not find user...123")
+                }
+            }
+        }
+
+        // 還書
+        returnBtn.setOnClickListener {
+            val bookIsbn = bookISBN.text.toString()
+            val userId = userID.text.toString()
+
+            if (!checkIsbn(bookIsbn, this)) {
+                return@setOnClickListener
+            }
+            if (!checkUserId(userId, this)) {
+                return@setOnClickListener
+            }
+
+            singleThreadExecutor.execute {
+                try {
+                    val db = AppDatabase.buildDatabase(this)
+                    val userDao = db.getUserDao()
+                    val user = userDao.getUserById(userId.uppercase())
+                    if (user == null) {
+                        runOnUiThread {
+                            result.text = "User not found. Return failed."
+                        }
+                        return@execute
+                    }
+
+                    val bookDao = db.getBookDao()
+                    val book = bookDao.getBookByISBN(bookIsbn)
+                    if (book == null) {
+                        runOnUiThread {
+                            result.text = "Book not found. Return failed."
+                        }
+                        return@execute
+                    }
+
+                    if (user.Borrowing1 != bookIsbn &&
+                        user.Borrowing2 != bookIsbn &&
+                        user.Borrowing3 != bookIsbn &&
+                        user.Borrowing4 != bookIsbn ) {
+                        runOnUiThread {
+                            result.text = "User didn't borrow this book. Return failed."
+                        }
+                        return@execute
+                    }
+
+                    if (user.Borrowing1 == bookIsbn) {
+                        userDao.updateOneUser(
+                            User(
+                                user.id,
+                                user.fullName,
+                                null,
+                                user.Borrowing2,
+                                user.Borrowing3,
+                                user.Borrowing4
+                            )
+                        )
+                    }else if (user.Borrowing2 == bookIsbn) {
+                        userDao.updateOneUser(
+                            User(
+                                user.id,
+                                user.fullName,
+                                user.Borrowing1,
+                                null,
+                                user.Borrowing3,
+                                user.Borrowing4
+                            )
+                        )
+                    }else if (user.Borrowing3 == bookIsbn) {
+                        userDao.updateOneUser(
+                            User(
+                                user.id,
+                                user.fullName,
+                                user.Borrowing1,
+                                user.Borrowing2,
+                                null,
+                                user.Borrowing4
+                            )
+                        )
+                    } else if (user.Borrowing4 == bookIsbn) {
+                        userDao.updateOneUser(
+                            User(
+                                user.id,
+                                user.fullName,
+                                user.Borrowing1,
+                                user.Borrowing2,
+                                user.Borrowing3,
+                                null
+                            )
+                        )
+                    }
+
+                    bookDao.updateOneBook(Book(book.isbn, book.bookName, null))
+                    runOnUiThread {
+                        result.text = "Return success!"
+                        bookISBN.setText("")
+                        userID.setText("")
+                    }
+                }catch (e: Exception) {
+                    result.text = e.message
+                    e.printStackTrace()
                 }
             }
 
-
         }
-
-        returnBtn.setOnClickListener {
-
-        }
-
     }
 }
