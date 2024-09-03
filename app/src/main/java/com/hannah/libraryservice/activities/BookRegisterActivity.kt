@@ -11,7 +11,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.hannah.libraryservice.R
 import com.hannah.libraryservice.db.AppDatabase
 import com.hannah.libraryservice.db.Book
-import com.hannah.libraryservice.util.IsbnUtil
+import com.hannah.libraryservice.util.IsbnUtil.Companion.checkIsbn
 import java.util.concurrent.Executors
 
 class BookRegisterActivity : AppCompatActivity() {
@@ -42,11 +42,9 @@ class BookRegisterActivity : AppCompatActivity() {
                 return@setOnClickListener
             }
 
-            // to do ...
-            if (!IsbnUtil.checkIsbn(bookISBN.text.toString(), this)) {
+            if (!checkIsbn(bookISBN.text.toString(), this)) {
                 return@setOnClickListener
             }
-
 
             // 以上條件滿足，則儲存 book 資料
             sigleThreadExecutor.execute {

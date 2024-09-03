@@ -11,7 +11,6 @@ import androidx.appcompat.app.AppCompatActivity
 import com.hannah.libraryservice.R
 import com.hannah.libraryservice.db.AppDatabase
 import com.hannah.libraryservice.db.User
-import com.hannah.libraryservice.util.IdUtil
 import com.hannah.libraryservice.util.IdUtil.Companion.checkUserId
 import java.util.concurrent.Executors
 
